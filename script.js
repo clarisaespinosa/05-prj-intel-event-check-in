@@ -1,33 +1,51 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  background: url("img/bg.jpg") no-repeat center center fixed;
-  background-size: cover;
+let attendance = 0;
+const maxAttendance = 50;
+let teams = { water: 0, net: 0, renew: 0 };
+
+function checkIn() {
+  const name = document.getElementById("nameInput").value.trim();
+  const team = document.getElementById("teamSelect").value;
+
+  if (!name || !team) {
+    alert("⚠️ Please enter your name and select a team.");
+    return;
+  }
+
+  // Increment totals
+  if (attendance < maxAttendance) {
+    attendance++;
+    teams[team]++;
+  } else {
+    alert("🚫 Attendance limit reached!");
+    return;
+  }
+
+  // Update totals
+  document.getElementById("attendanceCount").textContent = attendance;
+  document.getElementById("waterCount").textContent = teams.water;
+  document.getElementById("netCount").textContent = teams.net;
+  document.getElementById("renewCount").textContent = teams.renew;
+
+  // Update progress bar
+  const bar = document.getElementById("attendanceBar");
+  const percentage = (attendance / maxAttendance) * 100;
+  bar.style.width = percentage + "%";
+
+  // Clear inputs
+  document.getElementById("nameInput").value = "";
+  document.getElementById("teamSelect").value = "";
+
+  // Show welcome message
+  alert(`🎉 Welcome, ${name}! You joined ${formatTeam(team)}.`);
 }
 
-header {
-  background: rgba(0, 94, 166, 0.85);
-  color: white;
-  padding: 2rem 1rem;
+function formatTeam(team) {
+  if (team === "water") return "💧 Team Water Wise";
+  if (team === "net") return "🌱 Team Net Zero";
+  if (team === "renew") return "⚡ Team Renewables";
+  return "your team";
 }
 
-header .logo {
-  width: 120px;
-  margin-bottom: 1rem;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 1px;
-}
-
-.attendance-bar {
-  margin: 1rem auto;
-  width: 80%;
-  background: #e0e0e0;
   border-radius: 10px;
   height: 15px;
   overflow: hidden;
