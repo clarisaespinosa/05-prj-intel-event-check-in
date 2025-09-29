@@ -1,4 +1,3 @@
-/* Modern reset */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -27,6 +26,67 @@ header h1 {
 
 .attendance-bar {
   margin: 1rem auto;
+  width: 80%;
+  background: #e0e0e0;
+  border-radius: 10px;
+  height: 15px;
+  overflow: hidden;
+}
+
+.attendance-fill {
+  height: 100%;
+  background: #00c2ff;
+  width: 0%;
+  transition: width 0.3s;
+}
+
+.checkin-box {
+  background: white;
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+input, select, button {
+  padding: 0.6rem;
+  margin: 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  background: #0071c5;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background: #005ea6;
+}
+
+.teams {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.team-card {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+.team-water { background: #e3f2fd; }
+.team-net { background: #e8f5e9; }
+.team-renew { background: #fff8e1; }
+
   width: 80%;
   background: #e0e0e0;
   border-radius: 10px;
