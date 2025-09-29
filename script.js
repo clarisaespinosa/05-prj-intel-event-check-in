@@ -1,33 +1,92 @@
-let attendance = 0;
-const maxAttendance = 50;
-let teams = { water: 0, net: 0, renew: 0 };
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: url("img/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
 
-function checkIn() {
-  const name = document.getElementById("nameInput").value.trim();
-  const team = document.getElementById("teamSelect").value;
+header {
+  background: rgba(0, 94, 166, 0.85);
+  color: white;
+  padding: 2rem 1rem;
+}
 
-  if (!name || !team) {
-    alert("⚠️ Please enter your name and select a team.");
-    return;
-  }
+header .logo {
+  width: 120px;
+  margin-bottom: 1rem;
+}
 
-  // Increment totals
-  if (attendance < maxAttendance) {
-    attendance++;
-    teams[team]++;
-  } else {
-    alert("🚫 Attendance limit reached!");
-    return;
-  }
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
 
-  // Update totals
-  document.getElementById("attendanceCount").textContent = attendance;
-  document.getElementById("waterCount").textContent = teams.water;
-  document.getElementById("netCount").textContent = teams.net;
-  document.getElementById("renewCount").textContent = teams.renew;
+.attendance-bar {
+  margin: 1rem auto;
+  width: 80%;
+  background: #e0e0e0;
+  border-radius: 10px;
+  height: 15px;
+  overflow: hidden;
+}
 
-  // Update progress bar
-  const bar = document.getElementById("attendanceBar");
+.attendance-fill {
+  height: 100%;
+  background: #00c2ff;
+  width: 0%;
+  transition: width 0.3s;
+}
+
+.checkin-box {
+  background: white;
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+input, select, button {
+  padding: 0.6rem;
+  margin: 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  background: #0071c5;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background: #005ea6;
+}
+
+.teams {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.team-card {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+.team-water { background: #e3f2fd; }
+.team-net { background: #e8f5e9; }
+.team-renew { background: #fff8e1; }
+attendanceBar");
   const percentage = (attendance / maxAttendance) * 100;
   bar.style.width = percentage + "%";
 
