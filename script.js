@@ -3,6 +3,8 @@ const maxAttendance = 50;
 let teams = { water: 0, net: 0, renew: 0 };
 
 function checkIn() {
+  console.log("✅ Botón presionado"); // Para confirmar que funciona
+
   const name = document.getElementById("nameInput").value.trim();
   const team = document.getElementById("teamSelect").value;
 
@@ -46,3 +48,4 @@ function formatTeam(team) {
   return "your team";
 }
 
+ 
