@@ -46,4 +46,3 @@ function formatTeam(team) {
   return "your team";
 }
 
-}
